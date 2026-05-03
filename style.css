@@ -1,1 +1,65 @@
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
 
+/* VIDEO BACKGROUND */
+.video-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  object-fit: cover;
+}
+
+/* DARK OVERLAY */
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: -1;
+}
+
+/* NOISE TEXTURE */
+.noise {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: url('assets/noise.png');
+  opacity: 0.05;
+  z-index: 0;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+/* SECTIONS */
+.section {
+  min-height: 100vh;
+  padding: 100px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 1s;
+}
+
+.section.active {
+  opacity: 1;
+  transform: translateY(0);
+}

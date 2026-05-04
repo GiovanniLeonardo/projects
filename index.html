@@ -62,9 +62,23 @@ nav a {
   align-items: center;
   padding: 0 8%;
   position: relative;
-  background: url('assets/hero.png') center/cover no-repeat;
+  background: url('assets/ChatGPT Image1.png') center/cover no-repeat;
 }
 
+  .hero-left {
+  flex: 1;
+}
+
+.hero-right {
+  flex: 1;
+  text-align: right;
+}
+
+.hero-right img {
+  max-width: 100%;
+  opacity: 0.9;
+}
+  
 /* DARK OVERLAY for readability */
 .hero::before {
   content: "";
@@ -178,7 +192,7 @@ footer {
 </nav>
 
 <section class="hero">
-  <div class="hero-content">
+  <div class="hero-left">
     <h1>AI Precision. Human Emotion. Media That Moves.</h1>
     <p>We build intelligent, human-centered digital experiences.</p>
 
@@ -186,6 +200,10 @@ footer {
       <a href="#" class="btn primary">Explore Work</a>
       <a href="#" class="btn secondary">Play Showreel</a>
     </div>
+  </div>
+
+  <div class="hero-right">
+    <img src="assets/hero.png" alt="AI Human Media">
   </div>
 </section>
   

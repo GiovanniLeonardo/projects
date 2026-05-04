@@ -1,239 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Studio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & Media Portfolio | Innovation Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #050505;
+            --bg-card: #111111;
+            --accent: #00d4ff;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --border: rgba(255, 255, 255, 0.1);
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-<style>
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: #0a0a0a;
-  color: white;
-  overflow-x: hidden;
-}
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
 
-/* NAV */
-nav {
-  position: fixed;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 40px;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(10px);
-  z-index: 1000;
-}
+        /* --- Top Menu / Gallery --- */
+        .top-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            height: 200px;
+            border-bottom: 1px solid var(--border);
+        }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 20px;
-}
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-right: 1px solid var(--border);
+        }
 
-/* HERO */
-.hero {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 0 8%;
-  position: relative;
-  overflow: hidden;
-}
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(40%) brightness(0.7);
+            transition: 0.5s ease;
+        }
 
-/* BACKGROUND IMAGE */
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background: url('assets/hero.png') center/cover no-repeat;
-  transform: scale(1.1);
-  animation: slowZoom 20s ease-in-out infinite alternate;
-  z-index: -2;
-}
+        .gallery-item:hover img {
+            filter: grayscale(0%) brightness(1);
+            transform: scale(1.05);
+        }
 
-/* STRONGER DARK OVERLAY (key fix) */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(0,0,0,0.95) 25%,   /* darker left */
-    rgba(0,0,0,0.75) 50%,
-    rgba(0,0,0,0.3) 75%,
-    rgba(0,0,0,0.1) 100%
-  );
-  z-index: -1;
-}
+        /* --- Navigation --- */
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(15px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
 
-/* TEXT */
-.hero-content {
-  max-width: 600px;
-  backdrop-filter: blur(6px);
-  padding: 20px;
-  border-radius: 10px;
-  background: rgba(0,0,0,0.2);
-}
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            margin: 0 25px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            transition: 0.3s;
+            font-weight: 500;
+        }
 
-.hero h1 {
-  font-size: 3rem;
-  line-height: 1.2;
-  color: #ffffff;
-  text-shadow: 0 4px 20px rgba(0,0,0,0.8);
-}
+        nav a:hover {
+            color: var(--accent);
+        }
 
-.hero p {
-  color: rgba(255,255,255,0.85);
-  margin-top: 10px;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.7);
-}
+        /* --- Hero Section --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 100px 10%;
+            min-height: 80vh;
+            gap: 50px;
+        }
 
-  
-/* BUTTONS */
-.cta {
-  margin-top: 25px;
-}
+        .hero-text {
+            flex: 1;
+        }
 
-.btn {
-  padding: 12px 22px;
-  margin-right: 10px;
-  text-decoration: none;
-  border: 1px solid white;
-  color: white;
-  transition: 0.3s;
-}
+        .hero-text h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-.btn.primary {
-  background: linear-gradient(45deg, #6a5cff, #00d4ff);
-  border: none;
-}
+        .hero-text p {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+            max-width: 500px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
 
-.btn:hover {
-  transform: translateY(-2px);
-}
+        /* --- Video Showcase Container --- */
+        .video-container {
+            flex: 1.3;
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 0 60px rgba(0, 212, 255, 0.15);
+            border: 1px solid var(--border);
+            aspect-ratio: 16 / 9;
+            background: #000;
+        }
 
-/* SECTIONS */
-.section {
-  padding: 100px 20px;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 0.8s ease;
-}
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-.section.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+            pointer-events: none;
+        }
 
-.section h2 {
-  font-size: 2rem;
-}
+        /* --- Portfolio Section --- */
+        .portfolio-section {
+            padding: 120px 10%;
+            background: radial-gradient(circle at top right, #0a111a, #050505);
+        }
 
-.section p {
-  max-width: 500px;
-  margin: 10px auto;
-  opacity: 0.7;
-}
+        .section-title {
+            text-align: left;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            border-left: 4px solid var(--accent);
+            padding-left: 20px;
+        }
 
-/* CARDS */
-.card {
-  margin-top: 40px;
-  padding: 40px;
-  border: 1px solid rgba(255,255,255,0.1);
-  transition: 0.3s;
-}
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
 
-.card:hover {
-  transform: translateY(-10px);
-  border-color: white;
-}
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+        }
 
-/* FOOTER */
-footer {
-  padding: 40px;
-  text-align: center;
-  opacity: 0.5;
-}
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-15px);
+            background: #161616;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
 
-/* ANIMATIONS */
-@keyframes slowZoom {
-  0% { transform: scale(1.05); }
-  100% { transform: scale(1.15); }
-}
-</style>
+        .project-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+        }
+
+        .project-card p {
+            color: var(--text-dim);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .tag-row {
+            margin-top: 25px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            background: rgba(0, 212, 255, 0.1);
+            padding: 6px 14px;
+            border-radius: 100px;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            padding: 80px 20px;
+            border-top: 1px solid var(--border);
+            color: #555;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 1024px) {
+            .hero { flex-direction: column; text-align: center; padding: 60px 5%; }
+            .hero-text { padding-right: 0; }
+            .hero-text p { margin: 0 auto 40px auto; }
+            .grid-container { grid-template-columns: 1fr; }
+            .top-gallery { grid-template-columns: 1fr 1fr; height: auto; }
+        }
+    </style>
 </head>
-
 <body>
 
-<nav>
-  <div><strong>AI Studio</strong></div>
-  <div>
-    <a href="#">Work</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-  </div>
-</nav>
-
-<section class="hero">
-  <div class="hero-bg"></div>
-
-  <div class="hero-content">
-    <h1>AI Precision.<br>Human Emotion.<br>Media That Moves.</h1>
-    <p>We design intelligent, human-centered digital experiences that connect.</p>
-
-    <div class="cta">
-      <a href="#" class="btn primary">Explore Work</a>
-      <a href="#" class="btn">Play Showreel</a>
+    <!-- Top Gallery Header -->
+    <div class="top-gallery">
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&q=80&w=800" alt="Drone Tech">
+        </div>
+        <div class="gallery-item">
+            <!-- AI Focused Image -->
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="AI Neural Data">
+        </div>
+        <div class="gallery-item">
+            <!-- Robotic/AI Image -->
+            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800" alt="AI Interface">
+        </div>
+        <div class="gallery-item">
+            <!-- Cinematic Studio Image -->
+            <img src="https://images.unsplash.com/photo-1533488765986-dfa2a9939acd?auto=format&fit=crop&q=80&w=800" alt="Cinematic Studio Setup">
+        </div>
     </div>
-  </div>
-</section>
 
-<section class="section">
-  <h2>AI Design</h2>
-  <p>Smart systems that think, adapt, and evolve.</p>
-  <div class="card">Interfaces powered by intelligence and automation.</div>
-</section>
+    <nav>
+        <a href="#">Showcase</a>
+        <a href="#projects">Work</a>
+        <a href="#">Lab</a>
+        <a href="#">Contact</a>
+    </nav>
 
-<section class="section">
-  <h2>Human Touch</h2>
-  <p>Technology should feel natural, not mechanical.</p>
-  <div class="card">Crafted experiences with emotion and intention.</div>
-</section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Future Media <br>& Design</h1>
+            <p>A fusion of cinematic film, AI architecture, and sonic engineering. Building immersive business experiences through cutting-edge technology.</p>
+            <div class="tag-row" style="margin-bottom: 20px;">
+                <span class="tag">#AI_DESIGN</span>
+                <span class="tag">#CINEMATIC_FILM</span>
+                <span class="tag">#MUSIC_TECH</span>
+            </div>
+        </div>
 
-<section class="section">
-  <h2>Media</h2>
-  <p>Stories that move across film, sound, and design.</p>
-  <div class="card">Cinematic visuals and immersive storytelling.</div>
-</section>
+        <!-- Video Showcase Container -->
+        <div class="video-container">
+            <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800">
+                <source src="http://googleusercontent.com/generated_video_content/7858236577868966737" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+    </section>
 
-<footer>
-  © 2026 AI Studio
-</footer>
+    <!-- Portfolio Grid -->
+    <section class="portfolio-section" id="projects">
+        <h2 class="section-title">Project Portfolio</h2>
+        <div class="grid-container">
+            
+            <div class="project-card">
+                <h3>Neural Scripts</h3>
+                <p>Advanced Python and JavaScript automation frameworks designed for real-time data processing and AI model training.</p>
+                <div class="tag-row">
+                    <span class="tag">Automation</span>
+                    <span class="tag">Python</span>
+                </div>
+            </div>
 
-<script>
-// SCROLL FADE-IN
-const sections = document.querySelectorAll('.section');
+            <div class="project-card">
+                <h3>Cinematic AI Shorts</h3>
+                <p>An exploration of generative film techniques using Suno for audio and Veo 3.1 for cinematic consistency.</p>
+                <div class="tag-row">
+                    <span class="tag">Film</span>
+                    <span class="tag">Suno</span>
+                </div>
+            </div>
 
-window.addEventListener('scroll', () => {
-  sections.forEach(sec => {
-    const top = sec.getBoundingClientRect().top;
-    if (top < window.innerHeight - 80) {
-      sec.classList.add('show');
-    }
-  });
-});
+            <div class="project-card">
+                <h3>Intelligent Soundscapes</h3>
+                <p>Custom audio engines built for interactive media, merging classical music theory with AI-synthesized textures.</p>
+                <div class="tag-row">
+                    <span class="tag">Music</span>
+                    <span class="tag">Tech</span>
+                </div>
+            </div>
 
-// PARALLAX (subtle)
-window.addEventListener('scroll', () => {
-  const scroll = window.scrollY;
-  document.querySelector('.hero-bg').style.transform =
-    `scale(1.1) translateY(${scroll * 0.1}px)`;
-});
-</script>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 DIGITAL VISIONARY LAB &bull; THE ART OF THE ARTIFICIAL
+    </footer>
 
 </body>
 </html>

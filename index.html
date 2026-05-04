@@ -55,50 +55,64 @@ nav a {
 }
 
 /* HERO */
+
 .hero {
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  padding: 0 8%;
   position: relative;
+  background: url('assets/hero.png') center/cover no-repeat;
 }
 
-/* HERO IMAGE OVERLAY */
-.hero::after {
+/* DARK OVERLAY for readability */
+.hero::before {
   content: "";
   position: absolute;
-  width: 400px;
-  height: 400px;
-  background: url('https://images.unsplash.com/photo-1677442136019-21780ecad995') center/cover;
-  opacity: 0.15;
-  filter: blur(40px);
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.85) 30%,
+    rgba(0,0,0,0.4) 60%,
+    rgba(0,0,0,0.1) 100%
+  );
 }
 
-/* TEXT */
+/* CONTENT */
+.hero-content {
+  position: relative;
+  max-width: 600px;
+  z-index: 2;
+}
+
 .hero h1 {
   font-size: 3rem;
+  line-height: 1.2;
 }
 
-.hero p {
-  opacity: 0.7;
+.cta {
+  margin-top: 25px;
 }
 
 .btn {
-  margin-top: 25px;
-  padding: 12px 24px;
+  padding: 12px 22px;
+  margin-right: 10px;
+  text-decoration: none;
   border: 1px solid white;
-  background: transparent;
   color: white;
-  cursor: pointer;
   transition: 0.3s;
 }
 
-.btn:hover {
+.btn.primary {
+  background: linear-gradient(45deg, #6a5cff, #00d4ff);
+  border: none;
+}
+
+.btn.secondary:hover {
   background: white;
   color: black;
 }
-
+  
 /* SECTIONS */
 .section {
   padding: 100px 20px;
@@ -164,13 +178,17 @@ footer {
 </nav>
 
 <section class="hero">
-  <div>
+  <div class="hero-content">
     <h1>AI Precision. Human Emotion. Media That Moves.</h1>
-    <p>Where technology meets creativity.</p>
-    <button class="btn">Explore</button>
+    <p>We build intelligent, human-centered digital experiences.</p>
+
+    <div class="cta">
+      <a href="#" class="btn primary">Explore Work</a>
+      <a href="#" class="btn secondary">Play Showreel</a>
+    </div>
   </div>
 </section>
-
+  
 <section class="section">
   <h2>AI Design</h2>
   <p>Smart systems that create and adapt.</p>

@@ -44,45 +44,54 @@ nav a {
   overflow: hidden;
 }
 
-/* BACKGROUND IMAGE WITH MOTION */
+/* BACKGROUND IMAGE */
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: url('assets/ChatGPT Image1.png') center/cover no-repeat;
+  background: url('assets/hero.png') center/cover no-repeat;
   transform: scale(1.1);
   animation: slowZoom 20s ease-in-out infinite alternate;
   z-index: -2;
 }
 
-/* DARK OVERLAY */
+/* STRONGER DARK OVERLAY (key fix) */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(0,0,0,0.85) 30%,
-    rgba(0,0,0,0.4) 60%,
+    rgba(0,0,0,0.95) 25%,   /* darker left */
+    rgba(0,0,0,0.75) 50%,
+    rgba(0,0,0,0.3) 75%,
     rgba(0,0,0,0.1) 100%
   );
   z-index: -1;
 }
 
-/* HERO CONTENT */
+/* TEXT */
 .hero-content {
   max-width: 600px;
+  backdrop-filter: blur(6px);
+  padding: 20px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.2);
 }
 
 .hero h1 {
   font-size: 3rem;
   line-height: 1.2;
+  color: #ffffff;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.8);
 }
 
 .hero p {
-  opacity: 0.7;
+  color: rgba(255,255,255,0.85);
   margin-top: 10px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.7);
 }
 
+  
 /* BUTTONS */
 .cta {
   margin-top: 25px;
